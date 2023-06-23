@@ -1,20 +1,50 @@
 # tinygo
 
+## Most complex program
+
 ```go
-var a int64
-a = 42
+a := 42
 
-c := a + 1
-c = c + 1
+var b
+b = a + 2
 
-fmt.Println("Hello world!") // fmt module is already in the current scope
+Println(b)
+```
 
-func f(x string) {
-	a := 53
-	fmt.Printf("x=%v, a=%v\n", x, a)
-}
+## Grammar
 
-for i := 0; i < 10; i += 1 {
-  f("zoo")
-}
+```
+<program> ::= <statement_list>
+
+<statement_list> ::= <statement> <statement_list> | <statement>
+
+<statement> ::= <assignment_statement> | <declaration_statement> | <print_statement>
+
+<assignment_statement> ::= <identifier> := <expression> | <identifier> = <expression>
+
+<declaration_statement> ::= "var" <identifier>
+
+<print_statement> ::= "Println" "(" <expression> ")"
+
+<expression> ::= <identifier> | <literal> | <binary_expression>
+
+<binary_expression> ::= <expression> <operator> <expression>
+
+<operator> ::= "+" | "-" | "*" | "/"
+
+<identifier> ::= <letter> <identifier_tail>
+
+<identifier_tail> ::= <letter> | <digit> | "_"
+
+<literal> ::= <number>
+
+<number> ::= <digit> <number_tail>
+
+<number_tail> ::= <digit> <number_tail> | <epsilon>
+
+<letter> ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<epsilon> ::= ""
 ```
