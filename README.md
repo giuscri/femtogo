@@ -1,5 +1,18 @@
 # femtogo
 
+A toy project of an interpreter for a crazy small (_femto_) subset of the Go language.
+
+## Usage
+
+```
+$ pip3 install -e .
+$ echo '''
+a := 42
+Println(a)
+''' > /tmp/test.fgo
+$ femtogo -f /tmp/test.fgo
+```
+
 ## Most complex program
 
 ```go
