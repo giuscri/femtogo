@@ -1,0 +1,8 @@
+a := 42
+
+var b
+b = a + 2
+
+var c
+
+Println(c)

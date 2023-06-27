@@ -1,9 +1,9 @@
 import io
 import sys
 import contextlib
-from tinygo.lexer import Lexer
-from tinygo.parser import Parser
-from tinygo.interpreter import Interpreter
+from femtogo.lexer import Lexer
+from femtogo.parser import Parser
+from femtogo.interpreter import Interpreter
 
 def interpret(program: str) -> str:
     lexer = Lexer(program)

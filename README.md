@@ -1,4 +1,4 @@
-# tinygo
+# femtogo
 
 ## Most complex program
 

@@ -1,4 +1,4 @@
-from tinygo.lexer import Lexer, Token
+from femtogo.lexer import Lexer, Token
 
 def collect_tokens(lexer):
     tokens = []

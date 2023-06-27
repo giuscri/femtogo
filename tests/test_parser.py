@@ -1,6 +1,6 @@
-from tinygo.AST import *
-from tinygo.parser import Parser
-from tinygo.lexer import Lexer
+from femtogo.AST import *
+from femtogo.parser import Parser
+from femtogo.lexer import Lexer
 
 def ast_to_string(node):
     if isinstance(node, Program):
