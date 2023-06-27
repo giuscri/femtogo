@@ -1,0 +1,38 @@
+name: Run tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Run E2E tests
+        run: |
+          pip install -e .
+          echo '''
+          a := 42
+
+          var b
+          b = a + 2
+
+          Println(b)
+          ''' > /tmp/test.fgo
+          actual=$(femtogo -f /tmp/test.fgo)
+          expected="44"
+
+          [ "$expected" = "$actual" ]
