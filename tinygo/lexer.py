@@ -14,6 +14,12 @@ class Lexer:
     def error(self):
         raise Exception('Invalid character')
 
+    def tokenize(self):
+        tokens = []
+        while (tok := self.next_token()) != Token('EOF', None):
+            tokens.append(tok)
+        return tokens
+
     def advance(self):
         self.pos += 1
         if self.pos > len(self.text) - 1:
@@ -89,4 +95,4 @@ class Lexer:
 if __name__ == '__main__':
     # Use this space for quick testing lexer outputs.
 
-    lexer = Lexer('Println(a)')
+    lexer = Lexer('a := 42')
