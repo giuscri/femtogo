@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import argparse
+from tinygo.lexer import Lexer
+from tinygo.parser import Parser
+from tinygo.interpreter import Interpreter
+
+def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Tinygo is an interpreter for a subset of Go")
+    parser.add_argument('-f', '--file', help='source file to interpret')
+    args = parser.parse_args()
+
+    # Read the source file
+    with open(args.file, 'r') as file:
+        source = file.read()
+
+    # Tokenize the source
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+
+    # Parse the tokens into an AST
+    parser = Parser(tokens)
+    program = parser.program()
+
+    # Interpret the AST
+    interpreter = Interpreter()
+    interpreter.visit(program)
+
+if __name__ == '__main__':
+    main()
+
